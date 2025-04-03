@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tüm Tarifler</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>📋 Tüm Tarifler</h1>
+
+  <% recipes.forEach(recipe => { %>
+    <div style="margin-bottom: 20px;">
+      <h3><a href="/recipes/<%= recipe.slug %>"><%= recipe.title %></a></h3>
+      <% if (recipe.image) { %>
+        <img src="<%= recipe.image %>" style="max-width: 200px;">
+      <% } %>
+      <p><%= recipe.description %></p>
+    </div>
+  <% }) %>
+
+  <a href="/recipes/new">➕ Yeni Tarif Ekle</a>
+</body>
+</html>

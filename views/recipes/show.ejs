@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title><%= recipe.title %> - Tarif</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1><%= recipe.title %></h1>
+  <p><strong>Kategori:</strong> <%= recipe.category %></p>
+  <p><strong>Açıklama:</strong> <%= recipe.description %></p>
+  <p><strong>Tarif:</strong> <%= recipe.content %></p>
+  <p><strong>Oluşturulma:</strong> <%= recipe.createdAt.toLocaleDateString() %></p>
+
+  <% if (recipe.image) { %>
+    <img src="<%= recipe.image %>" alt="Tarif Görseli" style="max-width: 400px;">
+  <% } %>
+
+  <a href="/recipes">← Tarif Listesine Dön</a>
+</body>
+</html>

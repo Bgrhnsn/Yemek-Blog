@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Yemek Tarifi Blog</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>🍲 Hoş Geldiniz - Yemek Tarifi Blog</h1>
+  <p>Bu siteye tarifler ekleyebilir, yorum yapabilir ve tarifleri keşfedebilirsiniz.</p>
+
+  <form method="POST" action="/dummy">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button>CSRF Test</button>
+  </form>
+</body>
+</html>

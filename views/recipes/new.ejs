@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarif Ekle</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>📝 Yeni Tarif Ekle</h1>
+
+  <form action="/recipes" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    
+    <label>Başlık:</label><br>
+    <input type="text" name="title" required><br><br>
+
+    <label>Açıklama:</label><br>
+    <textarea name="description" rows="2"></textarea><br><br>
+
+    <label>Tarif İçeriği:</label><br>
+    <textarea name="content" rows="4"></textarea><br><br>
+
+    <label>Kategori:</label><br>
+    <input type="text" name="category"><br><br>
+
+    <label>Resim (URL):</label><br>
+    <input type="text" name="image"><br><br>
+
+    <button type="submit">Tarif Ekle</button>
+  </form>
+</body>
+</html>
