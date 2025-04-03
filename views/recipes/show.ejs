@@ -1,21 +1,39 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title><%= recipe.title %> - Tarif</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <h1><%= recipe.title %></h1>
-  <p><strong>Kategori:</strong> <%= recipe.category %></p>
-  <p><strong>Açıklama:</strong> <%= recipe.description %></p>
-  <p><strong>Tarif:</strong> <%= recipe.content %></p>
-  <p><strong>Oluşturulma:</strong> <%= recipe.createdAt.toLocaleDateString() %></p>
+<!-- 💬 Yorumlar Başlığı -->
+<h2 class="mt-5 mb-3">💬 Yorumlar</h2>
 
-  <% if (recipe.image) { %>
-    <img src="<%= recipe.image %>" alt="Tarif Görseli" style="max-width: 400px;">
-  <% } %>
+<% if (recipe.comments && recipe.comments.length > 0) { %>
+  <% recipe.comments.forEach(comment => { %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <strong><%= comment.username %></strong>
+        <p class="mb-1"><%= comment.text %></p>
+        <small class="text-muted"><%= comment.createdAt.toLocaleString() %></small>
+      </div>
+    </div>
+  <% }) %>
+<% } else { %>
+  <div class="alert alert-info">Henüz yorum yapılmamış.</div>
+<% } %>
 
-  <a href="/recipes">← Tarif Listesine Dön</a>
-</body>
-</html>
+<!-- 📝 Yorum Ekleme Formu -->
+<div class="card mt-4">
+  <div class="card-body">
+    <h4 class="card-title mb-3">📝 Yorum Ekle</h4>
+
+    <form action="/recipes/<%= recipe.slug %>/comments" method="POST">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+      <div class="mb-3">
+        <label for="username" class="form-label">Adınız</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="text" class="form-label">Yorum</label>
+        <textarea class="form-control" id="text" name="text" rows="3" placeholder="Yorumunuzu yazın..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Gönder</button>
+    </form>
+  </div>
+</div>
